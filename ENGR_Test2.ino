@@ -1,12 +1,12 @@
 #include <Servo.h>
-
+//Define input/output ports
 #define SERVO 10
 #define BUTTON 8
 #define RED 3
 #define GREEN 2
 #define BLUE 4
 #define SPEAKER 9
-
+//Define constants for notes
 #define NOTE_E3  2637
 #define NOTE_F3  2794
 #define NOTE_FS3 2960
@@ -22,6 +22,7 @@
 Servo arm;
 
 void setup() {
+//Set all ports to the correct mode
   pinMode(BUTTON, INPUT);
   pinMode(RED, OUTPUT);
   pinMode(GREEN, OUTPUT);
@@ -30,9 +31,6 @@ void setup() {
   Serial.begin(9600);
   arm.attach(SERVO);
   arm.write(0);
-  
-  // put your setup code here, to run once:
-
 }
 int ran = 0;
 void loop() {
@@ -54,7 +52,7 @@ void loop() {
         wave();
         break;
       case 2:
-        hesistate();
+        hesitate();
         break;
       case 3:
         quick();
@@ -102,9 +100,9 @@ void push(){
   delay(500);
 }
 
-void hesistate(){
+void hesitate(){
 //Pushes the button close, but then pop back up again
-  Serial.println("Hesistate");
+  Serial.println("hesitate");
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
@@ -137,7 +135,6 @@ void quick(){
 
 void wave(){
 //Popup and play the funkytown song while waving with hand
-  
   Serial.write("Wave");
   arm.write(85);
   tone(SPEAKER,NOTE_A3); 
@@ -146,7 +143,6 @@ void wave(){
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
-  
   delay(250);
   
   arm.write(65);
@@ -156,7 +152,6 @@ void wave(){
   digitalWrite(RED, LOW);
   digitalWrite(GREEN, LOW);
   digitalWrite(BLUE, LOW);
-  
   delay(250);
   
   arm.write(85);
@@ -166,7 +161,6 @@ void wave(){
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
-  
   delay(250);
   
   arm.write(65);
@@ -176,7 +170,6 @@ void wave(){
   digitalWrite(RED, LOW);
   digitalWrite(GREEN, LOW);
   digitalWrite(BLUE, LOW);
-  
   delay(500);
   
   arm.write(100);
@@ -186,7 +179,6 @@ void wave(){
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
-
   delay(500);
   
   arm.write(85);
@@ -196,7 +188,6 @@ void wave(){
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
-  
   delay(250);
   
   arm.write(65);
@@ -206,7 +197,6 @@ void wave(){
   digitalWrite(RED, LOW);
   digitalWrite(GREEN, LOW);
   digitalWrite(BLUE, LOW);
-  
   delay(250);
   
   arm.write(85);
@@ -216,7 +206,6 @@ void wave(){
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
-  
   delay(250);
   
   arm.write(65);
@@ -226,8 +215,8 @@ void wave(){
   digitalWrite(RED, LOW);
   digitalWrite(GREEN, LOW);
   digitalWrite(BLUE, LOW);
-  
   delay(250);
+  
   tone(SPEAKER,NOTE_A3);
   delay(50);
   noTone(SPEAKER);
@@ -235,7 +224,6 @@ void wave(){
   digitalWrite(RED, HIGH);
   digitalWrite(GREEN, HIGH);
   digitalWrite(BLUE, HIGH);
-  
   delay(250);
   
   
@@ -243,9 +231,10 @@ void wave(){
   digitalWrite(RED, LOW);
   digitalWrite(GREEN, LOW);
   digitalWrite(BLUE, LOW);
-  
   delay(250);
   
   arm.write(0);
+
+  delay(500);
 }
 
