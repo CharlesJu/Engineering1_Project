@@ -1,6 +1,6 @@
 #include <Servo.h>
 //Define input/output ports
-#define SERVO 10
+#define SERVO 11
 #define BUTTON 8
 #define RED 3
 #define GREEN 2
@@ -30,7 +30,7 @@ void setup() {
   pinMode(SPEAKER, OUTPUT);
   Serial.begin(9600);
   arm.attach(SERVO);
-  arm.write(0);
+  arm.write(5);
 }
 int ran = 0;
 void loop() {
@@ -71,7 +71,7 @@ void loop() {
 
   //Reset after the sequence is complete
   noTone(SPEAKER);
-  arm.write(0);
+  arm.write(5);
   digitalWrite(RED, LOW);
   digitalWrite(GREEN, LOW);
   digitalWrite(BLUE, LOW);
@@ -95,7 +95,7 @@ void push(){
   Serial.println("Hit");
   delay(1500);
   //Go back
-  arm.write(0);
+  arm.write(5);
   Serial.println("Return");
   delay(500);
 }
@@ -110,7 +110,7 @@ void hesitate(){
   arm.write(100);
   delay(1500);
   //Go back
-  arm.write(0);
+  arm.write(5);
   delay(1000);
   //Lift up the hood
   arm.write(70);
@@ -120,7 +120,7 @@ void hesitate(){
   arm.write(100);
   delay(1500);
   //Go back
-  arm.write(0);
+  arm.write(5);
   delay(500);
   noTone(SPEAKER);
 }
@@ -129,7 +129,7 @@ void quick(){
 //Turns off button very quickly
   arm.write(100);
   delay(500);
-  arm.write(0);
+  arm.write(5);
   delay(500);
 }
 
@@ -233,7 +233,7 @@ void wave(){
   digitalWrite(BLUE, LOW);
   delay(250);
   
-  arm.write(0);
+  arm.write(5);
 
   delay(500);
 }
